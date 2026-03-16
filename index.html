@@ -194,6 +194,7 @@
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 16px;
       margin-top: 20px;
+      align-items: start;
     }
 
     .about-chip {
@@ -286,7 +287,17 @@
         with my best buddy <strong>Nugget</strong> 🐕 (the goodest boy ever).
       </p>
       <div class="about-grid">
-        <div class="about-chip"><span class="emoji">🎮</span>Roblox</div>
+        <div class="about-chip roblox-chip" id="roblox-chip" onclick="toggleRoblox()" style="cursor:pointer;" title="Click to reveal">
+          <span class="emoji">🎮</span>Roblox
+          <div id="roblox-reveal" style="display:none; margin-top:10px; font-size:.85rem; font-weight:700;">
+            <div style="color:#333; margin-bottom:6px;">@luit_roblox_id</div>
+            <a href="https://www.roblox.com/users/luit_roblox_id/profile"
+               target="_blank"
+               rel="noopener"
+               onclick="event.stopPropagation()"
+               style="color:#5e35b1; text-decoration:underline;">View Profile →</a>
+          </div>
+        </div>
         <div class="about-chip"><span class="emoji">📺</span>Youtube</div>
         <div class="about-chip"><span class="emoji">📚</span>Manga</div>
         <div class="about-chip"><span class="emoji">🥁</span>Drummer</div>
@@ -303,6 +314,16 @@
   </footer>
 
   <script>
+    function toggleRoblox() {
+      const reveal = document.getElementById('roblox-reveal');
+      const chip = document.getElementById('roblox-chip');
+      const open = reveal.style.display === 'none';
+      reveal.style.display = open ? 'block' : 'none';
+      chip.style.background = open
+        ? 'linear-gradient(135deg, #ede7f6, #d1c4e9)'
+        : 'linear-gradient(135deg, #f3e5f5, #e8eaf6)';
+    }
+
     const birthday = new Date(2015, 6, 16); // July 16, 2015 (month is 0-indexed)
     const today = new Date();
     let age = today.getFullYear() - birthday.getFullYear();
