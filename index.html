@@ -309,7 +309,16 @@
                style="color:#5e35b1; text-decoration:underline;">View Profile →</a>
           </div>
         </div>
-        <div class="about-chip"><span class="emoji">🥁</span>Drums</div>
+        <div class="about-chip" id="drums-chip" onclick="toggleDrums()" style="cursor:pointer;" title="Click to reveal">
+          <span class="emoji">🥁</span>Drums
+          <div id="drums-reveal" style="display:none; margin-top:10px; font-size:.85rem; font-weight:700;">
+            <a href="https://www.youtube.com/playlist?list=PLpaVUh3wUiNPwuxiU-DWCIYuleRjHRLSs"
+               target="_blank"
+               rel="noopener"
+               onclick="event.stopPropagation()"
+               style="color:#5e35b1; text-decoration:underline;">View Playlist →</a>
+          </div>
+        </div>
         <div class="about-chip"><span class="emoji">📚</span>Manga</div>
         <div class="about-chip"><span class="emoji">🎨</span>Art</div>
         <div class="about-chip" id="youtube-chip" onclick="toggleYoutube()" style="cursor:pointer;" title="Click to reveal">
@@ -346,6 +355,16 @@
     function toggleRoblox() {
       const reveal = document.getElementById('roblox-reveal');
       const chip = document.getElementById('roblox-chip');
+      const open = reveal.style.display === 'none';
+      reveal.style.display = open ? 'block' : 'none';
+      chip.style.background = open
+        ? 'linear-gradient(135deg, #ede7f6, #d1c4e9)'
+        : 'linear-gradient(135deg, #f3e5f5, #e8eaf6)';
+    }
+
+    function toggleDrums() {
+      const reveal = document.getElementById('drums-reveal');
+      const chip = document.getElementById('drums-chip');
       const open = reveal.style.display === 'none';
       reveal.style.display = open ? 'block' : 'none';
       chip.style.background = open
